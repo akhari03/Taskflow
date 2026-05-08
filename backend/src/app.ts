@@ -9,6 +9,9 @@ import { errorHandler, notFound } from "./middleware/error.middleware";
 import apiRouter from "./routes";
 
 const app = express();
+app.get("/", (req, res) => {
+  res.send("Taskflow Backend Running Successfully 🚀");
+});
 
 app.use(
   cors({
