@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 
+import { Role } from "@prisma/client";
 import { prisma } from "../config/prisma";
 import { ApiError } from "../utils/apiError";
 import { signToken } from "../utils/jwt";
@@ -41,7 +42,9 @@ export const registerUser = async ({
       name,
       email,
       password: hashedPassword,
-      role: role ? role.toUpperCase() : "MEMBER",
+      role: role
+        ? Role[role.toUpperCase() as keyof typeof Role]
+        : Role.MEMBER,
     },
   });
 
