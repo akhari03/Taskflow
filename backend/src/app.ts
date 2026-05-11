@@ -15,7 +15,10 @@ app.get("/", (req, res) => {
 
 app.use(
   cors({
-    origin: env.CLIENT_URL,
+    origin: [
+      "http://localhost:5173",
+      "https://taskflow-alpha-six.vercel.app",
+    ],
     credentials: true,
   })
 );
